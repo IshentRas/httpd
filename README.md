@@ -1,2 +1,0 @@
-# httpd
-HTTPD Dockerfile
