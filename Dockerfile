@@ -9,7 +9,7 @@ RUN mkdir /etc/nginx/certs && /etc/pki/tls/certs/make-dummy-cert /etc/nginx/cert
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY ssl.conf /etc/nginx/conf.d
+COPY ssl.conf /etc/nginx/conf.d/ssl.conf
 
 VOLUME ["/var/cache/nginx"]
 
