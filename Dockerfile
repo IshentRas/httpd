@@ -11,8 +11,6 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY ssl.conf /etc/nginx/conf.d/ssl.conf
 
-#VOLUME ["/var/cache/nginx"]
-
 EXPOSE 80 443
 
 ENTRYPOINT ["/usr/sbin/nginx"]
