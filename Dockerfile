@@ -11,8 +11,9 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY ssl.conf /etc/nginx/conf.d/ssl.conf
 
-VOLUME ["/var/cache/nginx"]
+#VOLUME ["/var/cache/nginx"]
 
 EXPOSE 80 443
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
