@@ -15,9 +15,5 @@ COPY ssl.conf /etc/nginx/conf.d/ssl.conf
 
 EXPOSE 80 443
 
-<<<<<<< HEAD
-ENTRYPOINT ["nginx"]
-=======
 ENTRYPOINT ["/usr/sbin/nginx"]
->>>>>>> branch 'master' of git@github.com:IshentRas/httpd.git
 CMD ["-g", "daemon off;"]
