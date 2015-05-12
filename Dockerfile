@@ -1,17 +1,17 @@
-FROM centos
+# "ported" by IshentRas <william17.burton@gmail.com>
+#
+# Originally written for Fedora-Dockerfiles by
+#   "Scott Collier" <scollier@redhat.com>
 
-MAINTAINER William Burton "william17.burton@gmail.com"
+FROM centos:centos7
+MAINTAINER IshentRas william17.burton@gmail.com
 
-RUN yum install -y epel-release && yum install -y nginx && yum clean all
-RUN mkdir /etc/nginx/certs && /etc/pki/tls/certs/make-dummy-cert /etc/nginx/certs/localhost.crt 
-
-# forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
-
-COPY ssl.conf /etc/nginx/conf.d/ssl.conf
+RUN yum -y update && yum -y install httpd mod_ssl && yum clean all
 
 EXPOSE 80 443
 
-ENTRYPOINT ["/usr/sbin/nginx"]
-CMD ["-g", "daemon off;"]
+# Simple startup script to avoid some issues observed with container restart 
+ADD run-httpd.sh /run-httpd.sh
+RUN chmod -v +x /run-httpd.sh
+
+ENTRYPOINT ["/run-httpd.sh"]
