@@ -9,6 +9,7 @@ MAINTAINER IshentRas william17.burton@gmail.com
 RUN yum -y update && yum -y install httpd mod_ssl && yum clean all
 # Switch 80 & 443 to non-default WKP (Well Known Port < 1024)
 RUN find /etc/httpd/ -iname "*.conf" -exec sed -i -e 's/80/8080/g' -e 's/443/4443/g' {} \;
+RUN ln -s /tmp/ /etc/httpd && echo "PidFile    "tmp/httpd.pid"" >> /etc/httpd/conf/httpd.conf
 
 EXPOSE 8080 4443
 
