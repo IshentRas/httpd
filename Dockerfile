@@ -12,7 +12,10 @@ RUN find /etc/httpd/ -iname "*.conf" -exec sed -i -e 's/80/8080/g' -e 's/443/444
 # Create tmp directory for PID creation
 RUN ln -s /tmp/ /etc/httpd && echo "PidFile    "tmp/httpd.pid"" >> /etc/httpd/conf/httpd.conf
 # Modify log directory to enable non-root user to write
-RUN rm -rf /etc/httpd/logs && mkdir -m 777 /etc/httpd/logs
+RUN rm -rf /etc/httpd/logs && \
+    mkdir -m 777 /etc/httpd/logs && \ 
+    chmod 777 /etc/pki/tls/certs/localhost.crt /etc/pki/tls/private/localhost.key && \
+    rm -rf /run/httpd && mkdir -m 777 /run/httpd
 
 EXPOSE 8080 4443
 
