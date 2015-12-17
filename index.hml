@@ -1,0 +1,10 @@
+[root@ose0-master test]# cat test-app/index.html 
+<!doctype html>
+<html>
+  <head>
+    <title>test-app</title>
+  </head>
+<body>
+  <h1>Hello from httpd served index.html!</h1>
+</body>
+
