@@ -1,7 +1,7 @@
 FROM centos:centos7
 MAINTAINER IshentRas william17.burton@gmail.com
 
-RUN yum -y install --setopt=tsflags=nodocs httpd && yum clean all
+RUN yum clean all && yum -y install --setopt=tsflags=nodocs httpd && yum clean all
 # Create dedicated directory for http (Allow non root user to access/modify) 
 # Give the availabilty to run containers under random UID.
 
