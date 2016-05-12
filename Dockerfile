@@ -14,7 +14,7 @@ COPY ./contrib/ /usr/local/etc
 RUN sed -i -f /usr/local/etc/httpdconf.sed /etc/httpd/conf/httpd.conf && \
     rm -rf /run/httpd && mkdir -m 777 /run/httpd
 
-EXPOSE 8080
+EXPOSE 8081
 
 # Simple startup script to avoid some issues observed with container restart 
 ADD run-httpd.sh /run-httpd.sh
