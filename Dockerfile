@@ -1,4 +1,4 @@
-FROM centos/latest
+FROM centos/centos
 MAINTAINER IshentRas william17.burton@gmail.com
 
 RUN yum install -y nginx --setopt=tsflags=nodocs && yum clean all
