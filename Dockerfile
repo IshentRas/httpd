@@ -1,4 +1,4 @@
-FROM centos:centos7.2.1511
+FROM centos:latest
 MAINTAINER IshentRas william17.burton@gmail.com
 
 RUN yum install -y epel-release && yum install -y nginx --setopt=tsflags=nodocs && yum clean all
@@ -10,6 +10,6 @@ RUN sed -i 's/80/8080/g;s/pid.*/pid \/tmp\/nginx.pid\;/g;s/worker_processes.*/wo
     ln -sf /proc/1/fd/1 /var/log/nginx/access.log && \
     ln -sf /proc/1/fd/1 /var/log/nginx/error.log
 
-EXPOSE 8081
-
+EXPOSE 8080
+USER 1000
 CMD ["nginx", "-g", "daemon off;"]
